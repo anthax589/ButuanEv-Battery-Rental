@@ -1,4 +1,4 @@
-export type UserRole = 'Administrator' | 'Cashier' | 'Battery Releasing Officer' | 'Branch Personnel';
+export type UserRole = 'Administrator' | 'Cashier' | 'Battery Releasing Officer' | 'Branch Personnel' | (string & {});
 
 export type BranchName = 'Branch 1 - Main Hub' | 'Branch 2 - Metro Station';
 

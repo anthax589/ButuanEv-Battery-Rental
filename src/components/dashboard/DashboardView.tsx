@@ -156,7 +156,7 @@ export const DashboardView: React.FC = () => {
         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
           {/* Batteries Summary */}
           <div className="bg-white p-3.5 rounded-lg border border-slate-200">
-            <div className="flex items-center justify-between text-slate-500 text-xs">
+            <div className="flex items-center justify-between text-slate-900 text-xs font-medium">
               <span>Total Batteries</span>
               <Battery className="w-4 h-4 text-slate-400" />
             </div>
@@ -170,7 +170,7 @@ export const DashboardView: React.FC = () => {
 
           <div className="bg-white p-3.5 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between text-slate-700 text-xs font-medium">
-              <span>Available Bats</span>
+              <span>Available Batteries</span>
               <CheckCircle2 className="w-4 h-4 text-slate-600" />
             </div>
             <div className="mt-2 flex items-baseline justify-between">
@@ -185,7 +185,7 @@ export const DashboardView: React.FC = () => {
 
           <div className="bg-white p-3.5 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between text-slate-700 text-xs font-medium">
-              <span>Rented Bats</span>
+              <span>Rented Batteries</span>
               <Clock className="w-4 h-4 text-slate-500" />
             </div>
             <div className="mt-2 flex items-baseline justify-between">
@@ -200,7 +200,7 @@ export const DashboardView: React.FC = () => {
 
           <div className="bg-white p-3.5 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between text-slate-700 text-xs font-medium">
-              <span>Charging Bats</span>
+              <span>Charging Batteries</span>
               <BatteryCharging className="w-4 h-4 text-slate-500" />
             </div>
             <div className="mt-2 flex items-baseline justify-between">
@@ -215,7 +215,7 @@ export const DashboardView: React.FC = () => {
 
           <div className="bg-white p-3.5 rounded-lg border border-slate-200">
             <div className="flex items-center justify-between text-slate-700 text-xs font-medium">
-              <span>Damaged Bats</span>
+              <span>Damaged Batteries</span>
               <AlertTriangle className="w-4 h-4 text-slate-600" />
             </div>
             <div className="mt-2 flex items-baseline justify-between">
@@ -230,7 +230,7 @@ export const DashboardView: React.FC = () => {
 
           {/* Units Summary */}
           <div className="bg-white p-3.5 rounded-lg border border-slate-200">
-            <div className="flex items-center justify-between text-slate-500 text-xs">
+            <div className="flex items-center justify-between text-slate-900 text-xs font-medium">
               <span>Total EV Units</span>
               <Car className="w-4 h-4 text-slate-400" />
             </div>
