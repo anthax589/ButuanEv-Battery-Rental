@@ -1,7 +1,6 @@
 import React, { FormEvent, useState } from "react";
 import {
   ArrowRight,
-  ChevronDown,
   Eye,
   EyeOff,
   LockKeyhole,
@@ -9,21 +8,13 @@ import {
 } from "lucide-react";
 import Logo from "../../assets/img/ButuanEvLogo.png";
 import { BranchName, UserRole } from "../../types";
+import { getAccountForEmail } from "../../auth/accounts";
 
 interface LoginViewProps {
-  onSignIn: (role: UserRole, branch: "All" | BranchName) => void;
+  onSignIn: (role: UserRole, branch: "All" | BranchName, staffName: string) => void;
 }
 
-const roleDescriptions: Record<UserRole, string> = {
-  Administrator: "Manage the full system and all branches.",
-  Cashier: "Handle rentals, drivers, and payment records.",
-  "Battery Releasing Officer": "Release and return batteries and EV units.",
-  "Branch Personnel": "Manage day-to-day activity at your branch.",
-};
-
 export const LoginView: React.FC<LoginViewProps> = ({ onSignIn }) => {
-  const [role, setRole] = useState<UserRole>("Cashier");
-  const [branch, setBranch] = useState<BranchName>("Branch 1 - Main Hub");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -35,8 +26,15 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSignIn }) => {
       setError("Enter an email and password to continue to the preview.");
       return;
     }
+
+    const account = getAccountForEmail(email);
+    if (!account) {
+      setError("This email is not assigned to a preview account.");
+      return;
+    }
+
     setError("");
-    onSignIn(role, role === "Administrator" ? "All" : branch);
+    onSignIn(account.role, account.branch, account.name);
   };
 
   return (
@@ -99,7 +97,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSignIn }) => {
                 Sign in to your workspace
               </h2>
               <p className="mt-2 text-sm leading-6 text-slate-600">
-                Use your assigned account to open the tools for your role.
+                Your workspace is selected automatically from your account email.
               </p>
             </div>
 
@@ -162,7 +160,7 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSignIn }) => {
                 </div>
               </div>
 
-              <div className="grid gap-4 sm:grid-cols-2">
+              {/* <div className="grid gap-4 sm:grid-cols-2">
                 <div>
                   <label
                     htmlFor="login-role"
@@ -222,14 +220,14 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSignIn }) => {
                     />
                   </div>
                 </div>
-              </div>
+              </div> */}
 
-              <p
+              {/* <p
                 className="-mt-2 text-xs leading-5 text-slate-500"
                 aria-live="polite"
               >
                 {roleDescriptions[role]}
-              </p>
+              </p> */}
 
               {error && (
                 <p
@@ -257,8 +255,8 @@ export const LoginView: React.FC<LoginViewProps> = ({ onSignIn }) => {
           <p className="mt-5 text-center text-xs text-slate-500">
             © {new Date().getFullYear()} ButuanEV Battery Rental System
           </p>
-    </main>
         </div>
       </section>
+    </main>
   );
 };

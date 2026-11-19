@@ -90,6 +90,8 @@ export const Header: React.FC<HeaderProps> = ({ setMobileOpen }) => {
         return ["Reports", "Driver Loyalty Rewards"];
       case "settings":
         return ["System", "Configuration & Pricing Rates"];
+      case "staff-accounts":
+        return ["System", "Staff & Accounts"];
       default:
         return ["ButuanEV", "Management"];
     }

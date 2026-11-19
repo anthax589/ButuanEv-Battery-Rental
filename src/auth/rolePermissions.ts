@@ -1,6 +1,7 @@
 import { UserRole } from "../types";
+import { getTabsForRole } from "./accounts";
 
-const roleTabs: Record<UserRole, string[]> = {
+const roleTabs: Partial<Record<UserRole, string[]>> = {
   Administrator: ["*"],
   Cashier: [
     "dashboard",
@@ -40,7 +41,10 @@ const roleTabs: Record<UserRole, string[]> = {
 };
 
 export const canAccessTab = (role: UserRole, tab: string) =>
-  roleTabs[role].includes("*") || roleTabs[role].includes(tab);
+  tab === "staff-accounts"
+    ? role === "Administrator"
+    : (getTabsForRole(role) ?? roleTabs[role] ?? []).includes("*") ||
+      (getTabsForRole(role) ?? roleTabs[role] ?? []).includes(tab);
 
 export const defaultTabForRole = (role: UserRole) =>
   role === "Battery Releasing Officer" ? "active-rentals" : "dashboard";

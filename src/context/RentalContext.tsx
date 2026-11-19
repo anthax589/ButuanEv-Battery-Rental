@@ -41,7 +41,7 @@ interface RentalContextType {
   setCurrentTab: (tab: string) => void;
   currentRole: UserRole;
   isAuthenticated: boolean;
-  signIn: (role: UserRole, branch: 'All' | BranchName) => void;
+  signIn: (role: UserRole, branch: 'All' | BranchName, staffName?: string) => void;
   signOut: () => void;
   currentBranch: 'All' | BranchName;
   setCurrentBranch: (branch: 'All' | BranchName) => void;
@@ -170,11 +170,13 @@ export const RentalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
   // User and navigation state
   const [currentTab, setCurrentTab] = useState<string>('dashboard');
   const [currentRole, setCurrentRole] = useState<UserRole>('Cashier');
+  const [currentStaffName, setCurrentStaffName] = useState('Maria Santos');
   const [currentBranch, setCurrentBranch] = useState<'All' | BranchName>('All');
   const [isAuthenticated, setIsAuthenticated] = useState(false);
 
-  const signIn = (role: UserRole, branch: 'All' | BranchName) => {
+  const signIn = (role: UserRole, branch: 'All' | BranchName, staffName?: string) => {
     setCurrentRole(role);
+    setCurrentStaffName(staffName?.trim() || 'Staff Member');
     setCurrentBranch(branch);
     setCurrentTab(role === 'Battery Releasing Officer' ? 'active-rentals' : 'dashboard');
     setIsAuthenticated(true);
@@ -186,11 +188,7 @@ export const RentalProvider: React.FC<{ children: React.ReactNode }> = ({ childr
     setCurrentBranch('All');
   };
 
-  // Compute realistic user name based on role
-  const currentUser = currentRole === 'Administrator' ? 'Alex Rivera (Admin)' :
-                      currentRole === 'Cashier' ? 'Maria Santos (Cashier)' :
-                      currentRole === 'Battery Releasing Officer' ? 'Danilo Cruz (Releasing Officer)' :
-                      'Leah Garcia (Branch Personnel)';
+  const currentUser = `${currentStaffName} (${currentRole})`;
 
   // Modals
   const [activeVoucherModal, setActiveVoucherModal] = useState<RentalTransaction | null>(null);

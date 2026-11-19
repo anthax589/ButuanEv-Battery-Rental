@@ -333,6 +333,17 @@ export const Sidebar: React.FC<SidebarProps> = ({
           {/* System Settings for Admin */}
           {canAccessTab(currentRole, "settings") && (
             <div className="pt-2 border-t border-slate-200">
+              {canAccessTab(currentRole, "staff-accounts") && <button
+                onClick={() => navigateTo("staff-accounts")}
+                className={`mb-1 w-full flex items-center gap-2.5 px-3 py-1.5 text-md rounded-md transition-colors cursor-pointer ${
+                  currentTab === "staff-accounts"
+                    ? "bg-slate-50 text-slate-900 font-medium"
+                    : "text-slate-600 hover:text-slate-500 hover:bg-slate-100"
+                }`}
+              >
+                <Users className="w-3.5 h-3.5 text-slate-400" />
+                <span>Staff &amp; Accounts</span>
+              </button>}
               <button
                 onClick={() => navigateTo("settings")}
                 className={`w-full flex items-center gap-2.5 px-3 py-1.5 text-md rounded-md transition-colors cursor-pointer ${

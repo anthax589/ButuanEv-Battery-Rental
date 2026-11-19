@@ -25,6 +25,7 @@ import { DriverListView } from './components/drivers/DriverListView';
 import { PaymentsView } from './components/payments/PaymentsView';
 import { ReportsView } from './components/reports/ReportsView';
 import { SettingsView } from './components/settings/SettingsView';
+import { AccountsView } from './components/settings/AccountsView';
 import { VoucherModal } from './components/modals/VoucherModal';
 import { ReceiptModal } from './components/modals/ReceiptModal';
 import { RentalDetailModal } from './components/modals/RentalDetailModal';
@@ -80,6 +81,8 @@ const AppContent: React.FC = () => {
         return <ReportsView />;
       case 'settings':
         return <SettingsView />;
+      case 'staff-accounts':
+        return <AccountsView />;
       default:
         return <DashboardView />;
     }
