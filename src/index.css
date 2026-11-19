@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+/* Brand-tinted utility ramps keep existing screen classes consistent app-wide. */
+@theme {
+  --color-slate-50: #f6f9fc;
+  --color-slate-100: #eef3f8;
+  --color-slate-200: #dce6f0;
+  --color-slate-300: #c4d2e0;
+  --color-slate-400: #5d748a;
+  --color-slate-500: #4e6680;
+  --color-slate-600: #3c5570;
+  --color-slate-700: #294561;
+  --color-slate-800: #173654;
+  --color-slate-850: #0e2f54;
+  --color-slate-900: #09284e;
+  --color-slate-950: #061b37;
+
+  --color-emerald-50: #eef7ed;
+  --color-emerald-100: #dcefd9;
+  --color-emerald-200: #b9e0b2;
+  --color-emerald-300: #91cd88;
+  --color-emerald-400: #237e1d;
+  --color-emerald-500: #1f751a;
+  --color-emerald-600: #1b6b16;
+  --color-emerald-700: #165713;
+  --color-emerald-800: #124512;
+  --color-emerald-900: #10380f;
+  --color-emerald-950: #092109;
+
+  --color-blue-50: #eff9fb;
+  --color-blue-100: #d9f1f4;
+  --color-blue-200: #b8e5eb;
+  --color-blue-300: #86d2dc;
+  --color-blue-400: #00778a;
+  --color-blue-500: #007484;
+  --color-blue-600: #006e7b;
+  --color-blue-700: #005865;
+  --color-blue-800: #064652;
+  --color-blue-900: #083943;
+  --color-blue-950: #05262e;
+
+  --color-cyan-50: #effbfd;
+  --color-cyan-100: #d4f6f9;
+  --color-cyan-200: #adecf2;
+  --color-cyan-300: #72dce7;
+  --color-cyan-400: #2bcadd;
+  --color-cyan-500: #06bad1;
+  --color-cyan-600: #007e91;
+  --color-cyan-700: #006373;
+  --color-cyan-800: #084e5d;
+  --color-cyan-900: #0a404d;
+  --color-cyan-950: #062a33;
+}
+
+@layer base {
+  :root {
+    --font-display: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-body: 'DM Sans', system-ui, -apple-system, sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --logo-primary: #06bad1;
+    --logo-primary-strong: #00778a;
+    --logo-secondary: #002353;
+    --logo-accent: #248d1f;
+    --logo-accent-strong: #1f751a;
+    --surface-canvas: #f6f9fc;
+    --surface-raised: #ffffff;
+    --text-primary: #09284e;
+  }
+
+  body {
+    font-family: var(--font-body);
+    color: var(--text-primary);
+    background-color: var(--surface-canvas);
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display {
+    font-family: var(--font-display);
+    letter-spacing: -0.02em;
+  }
+
+  .font-mono, [data-mono] {
+    font-family: var(--font-mono);
+    font-variant-numeric: tabular-nums;
+  }
+}
+
+button:focus-visible {
+  outline: 2px solid var(--logo-primary-strong);
+  outline-offset: 2px;
+}
+
+/* Print specific styles for rental vouchers and payment receipts */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-card {
+    border: 1px solid #e2e8f0 !important;
+    box-shadow: none !important;
+    page-break-inside: avoid;
+  }
+}

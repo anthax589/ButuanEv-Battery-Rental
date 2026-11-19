@@ -1,0 +1,6 @@
+{
+  "name": "BXUEV - Battery & Unit Rental Management",
+  "description": "User-friendly, modern operations management system for BXUEV battery swapping and EV unit rentals, driver tracking, inventory, and accounting.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
